@@ -1,6 +1,4 @@
-PROGRAM EXERICICI2
-    
-    
+PROGRAM MC1MILLORAT    
     IMPLICIT NONE
     
     INTEGER*4 I, J, K, L, SEED
@@ -9,9 +7,13 @@ PROGRAM EXERICICI2
     REAL*8 ENERG, ENE, GENRAND_REAL2, TEMP, MAGNE, W(-8:8)
     INTEGER*8 MCTOT, RANDI, RANDJ, IMC, SUM1, SUM2, DE
     
-    TEMP = 1.2D0
+    TEMP = 1.8D0
     SEED = 23457
     MCTOT = 3000
+
+    OPEN(1, FILE = "SIM-L-048-MCTOT-10K-TEMP-1800K.out")
+
+    WRITE(1, *) "IMC, ENE (CALCULAT AMB DE), ENE (CALCULAT SOBRE LA MATRIU), MAGNETITZACIÓ"
 
     !---------------------------------------------------------------------------
 
@@ -75,11 +77,13 @@ PROGRAM EXERICICI2
 
         END DO
         
-        WRITE(*,*) "IMC: ", IMC, "ENE", ENE, "ENEBIS", ENERG(S,L,PBC), "MAGNE", MAGNE(S,L)
+        WRITE(1,*) "IMC: ", IMC, "ENE", ENE, "ENEBIS", ENERG(S,L,PBC), "MAGNE", MAGNE(S,L)
 
-    END DO 
+    END DO
+    
+    CLOSE(1)
 
-END PROGRAM EXERICICI2
+END PROGRAM MC1MILLORAT
 
 
 
