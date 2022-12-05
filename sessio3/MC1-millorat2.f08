@@ -7,11 +7,11 @@ PROGRAM MC1MILLORAT
     REAL*8 ENERG, ENE, GENRAND_REAL2, TEMP, MAGNE, W(-8:8)
     INTEGER*8 MCTOT, RANDI, RANDJ, IMC, SUM1, SUM2, DE
     
-    TEMP = 1.8D0
-    SEED = 23457
-    MCTOT = 3000
+    TEMP = 4.5D0
+    SEED = 23609
+    MCTOT = 10000
 
-    OPEN(1, FILE = "SIM-L-048-MCTOT-10K-TEMP-1800K.out")
+    OPEN(1, FILE = "SIM-L-048-MCTOT-10K-TEMP-4500K.out")
 
     WRITE(1, *) "IMC, ENE (CALCULAT AMB DE), ENE (CALCULAT SOBRE LA MATRIU), MAGNETITZACIÓ"
 
@@ -58,21 +58,21 @@ PROGRAM MC1MILLORAT
             RANDI = INT(GENRAND_REAL2()*(L))+1
             RANDJ = INT(GENRAND_REAL2()*(L))+1
 
-
             SUM1 = S(PBC(RANDI + 1), RANDJ) + S(PBC(RANDI-1), RANDJ)
             SUM2 = S(RANDI, PBC(RANDJ + 1)) + S(RANDI, PBC(RANDJ-1))
             DE = 2*S(RANDI, RANDJ)*(SUM1 + SUM2)
-            
 
             IF (DE.LE.0) THEN
                 S(RANDI, RANDJ) = -S(RANDI, RANDJ)
                 ENE = ENE + DE 
                 
-                
-            ELSE IF ((GENRAND_REAL2()).LT.(W(DE))) THEN
-                S(RANDI, RANDJ) = -S(RANDI, RANDJ)
-                ENE = ENE + DE
-            END IF
+            ELSE IF (DE.GT.0) THEN
+                IF ((GENRAND_REAL2()).LT.(W(DE))) THEN
+                    S(RANDI, RANDJ) = -S(RANDI, RANDJ)
+                    ENE = ENE + DE
+                END IF
+
+            ENDIF
  
 
         END DO

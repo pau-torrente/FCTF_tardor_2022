@@ -1,0 +1,19 @@
+PROGRAM CONCATENATE
+
+    IMPLICIT NONE  
+
+    INTEGER*2 I  
+
+    CHARACTER INDEX
+
+
+    10 FORMAT(I2)
+
+    DO I = 1, 3
+ 
+        WRITE(INDEX,10) I 
+        WRITE(*,*) INDEX
+    END DO 
+
+
+END PROGRAM CONCATENATE
