@@ -26,6 +26,8 @@ PROGRAM MC3
 
     DO L = 12, 72, 12
 
+        WRITE(*,*) "-------------L = ", L, " -------------"
+
         ALLOCATE(S(1:L,1:L), PBC(0:L+1))
 
         DO TEMPINDEX = ITINDEX, FTINDEX, PASTINDEX

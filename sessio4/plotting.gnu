@@ -30,6 +30,6 @@ set title "X vs T using 0.1T increments and L=48"
 
 N = 48*48
 
-plot "pau_torrente_badia.res" u 2:(($9-($7)**2)/(N*$2)) w linespoints t ""
+plot "processed_pau_torrente_badia.txt" index 0 u 2:(($9-($7)**2)/(N*$2)) w linespoints t ""
 
 pause -1
