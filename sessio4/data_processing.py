@@ -3,27 +3,31 @@ import numpy as np
 import matplotlib as mbl
 import matplotlib.pyplot as plt
 import os
+import shutil
 
 
-directory = 'C:/Users/ptbad/Desktop/practiques_fenomens/FCTF_tardor_2022/sessio4/data_files'
+directories = ['final/data_exes_002/data', 'final/data_exes_0005/data']
 
 check = True
 
-for filename in os.listdir(directory):
+for directory in directories:
 
-    f = os.path.join(directory, filename)
-    
-    if os.path.isfile(f):
-        if check:
+    for filename in os.listdir(directory):
 
-            columns = 'L TEMP SUM SUME SUME2 VARE SUMM SUMAM SUMM2 VARM DELTAE DELTAT'
-            data = pd.read_csv(f, header = None, delim_whitespace=True, names = columns.split(' '))
-            check = False
+        f = os.path.join(directory, filename)
+        
+        if os.path.isfile(f):
 
-        else:
+            if check:
 
-            new_data = pd.read_csv(f, header = None, delim_whitespace=True, names = columns.split(' '))
-            data = pd.concat(data, new_data)
+                columns = 'L TEMP SUM SUME SUME2 VARE SUMM SUMAM SUMM2 VARM DELTAE DELTAT'
+                data = pd.read_csv(f, header = None, delim_whitespace=True, names = columns.split(' '))
+                check = False
+
+            else:
+
+                new_data = pd.read_csv(f, header = None, delim_whitespace=True, names = columns.split(' '))
+                data = pd.concat(data, new_data)
 
 
 data_matrix = np.array(data.sort_values(by=['L','TEMP']))

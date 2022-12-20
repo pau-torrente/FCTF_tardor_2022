@@ -10,21 +10,21 @@ PROGRAM MC3
     
     NSEED = 200
     SEED0 = 117654
-    MCTOT = 50000
+    MCTOT = 60000
     MCINI = 10000
     MCD = 20
 
 
-    OPEN(1, FILE = "C:\Users\ptbad\Desktop\practiques_fenomens\FCTF_tardor_2022\sessio4\data_files\pau_torrente_badia.res")
+    OPEN(1, FILE = "data/C10_2920_2300.res")
 
-    WRITE(*,*) "Starting to calculate T from 2.0 to 1.5 in 0.01 increments in different sizes"
+    WRITE(*,*) "CORE 10 : Temperature from 2.920 to 3.000 in 0.020 increments"
 
-    ITINDEX = 150
-    FTINDEX = 175
-    PASTINDEX = 1
+    ITINDEX = 2920
+    FTINDEX = 3000
+    PASTINDEX = 20
 
     CALL CPU_TIME(TIME1)
-
+    
     DO L = 12, 72, 12
 
         WRITE(*,*) " "
@@ -35,9 +35,11 @@ PROGRAM MC3
 
         ALLOCATE(S(1:L,1:L), PBC(0:L+1))
 
+        PREVSUME = 0.D0
+
         DO TEMPINDEX = ITINDEX, FTINDEX, PASTINDEX
 
-            TEMP = DBLE(TEMPINDEX)/100.D0
+            TEMP = DBLE(TEMPINDEX)/1000.D0
             WRITE(*,*) "Temperature = ", TEMP   !TO KEEP TRACK OF THE PROCESS
 
             SUM=0.0D0
@@ -47,7 +49,7 @@ PROGRAM MC3
             SUMM2=0.0D0
             SUMAM=0.0D0
 
-            PREVSUME = 0.D0
+            
             
             DO SEED = SEED0, SEED0+NSEED-1, 1
 
@@ -138,18 +140,17 @@ PROGRAM MC3
 
             IF (ABS(PREVSUME-0.D0).LT.(1.D-8)) THEN
 
-                WRITE(1,*) L, TEMP, SUM, SUME, SUME2, VARE, SUMM, SUMAM, SUMM2, VARM, 0.D0, DBLE(PASTINDEX)/100.D0
+                WRITE(1,*) L, TEMP, SUM, SUME, SUME2, VARE, SUMM, SUMAM, SUMM2, VARM, 0.D0, DBLE(PASTINDEX)/1000.D0
 
             ELSE 
 
-                WRITE(1,*) L, TEMP, SUM, SUME, SUME2, VARE, SUMM, SUMAM, SUMM2, VARM, SUME-PREVSUME, DBLE(PASTINDEX)/100.D0
+                WRITE(1,*) L, TEMP, SUM, SUME, SUME2, VARE, SUMM, SUMAM, SUMM2, VARM, SUME-PREVSUME, DBLE(PASTINDEX)/1000.D0
             
             END IF 
 
             PREVSUME = SUME
 
             !-----------------------------------------------------------------------------------------------------
-
 
         END DO
 
