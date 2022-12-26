@@ -15,13 +15,13 @@ PROGRAM MC3
     MCD = 20
 
 
-    OPEN(1, FILE = "data/C10_2920_2300.res")
+    OPEN(1, FILE = "data/C5_1960_2000.res")
 
-    WRITE(*,*) "CORE 10 : Temperature from 2.920 to 3.000 in 0.020 increments"
+    WRITE(*,*) "CORE 5 : Temperature from 1.960 to 2.000 in 0.040 increments"
 
-    ITINDEX = 2920
-    FTINDEX = 3000
-    PASTINDEX = 20
+    ITINDEX = 1960
+    FTINDEX = 2000
+    PASTINDEX = 40
 
     CALL CPU_TIME(TIME1)
     

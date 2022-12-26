@@ -1,7 +1,5 @@
 import pandas as pd
 import numpy as np
-import matplotlib as mbl
-import matplotlib.pyplot as plt
 import os
 
 
@@ -29,6 +27,7 @@ for filename in os.listdir(directory):
 data_matrix = np.array(data.sort_values(by=['L','TEMP']))
 
 empty = np.array([[]])
+
 with open("processed_pau_torrente_badia.txt", "ab") as f:
 
     for L in range(12,84,12):
