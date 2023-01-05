@@ -5,15 +5,15 @@ set output "plot1_diff_temp_energy.png"
 set xzeroaxis
 set yzeroaxis
 
-set ylabel "E"
-set xlabel "IMC"
+set ylabel "e = E/N"
+set xlabel "Pas Montecarlo"
 
 set rmargin 20
 set key at screen 1, graph 1
 
 N = 48*48
 
-plot "SIM-L-048-MCTOT-10K-TEMP-1500K.out" u 2:($4/N) t "Temp = 1.5K" w l, "SIM-L-048-MCTOT-10K-TEMP-1800K.out" u 2:($4/N) t "Temp = 1.8K" w l, "SIM-L-048-MCTOT-10K-TEMP-2500K.out" u 2:($4/N) t "Temp = 2.5K" w l, "SIM-L-048-MCTOT-10K-TEMP-3500K.out" u 2:($4/N) t "Temp = 3.5K" w l, "SIM-L-048-MCTOT-10K-TEMP-4500K.out" u 2:($4/N) t "Temp = 4.5K" w l
+plot "SIM-L-048-MCTOT-10K-TEMP-1500K.out" u 2:($4/N) t "T* = 1.5" w l, "SIM-L-048-MCTOT-10K-TEMP-1800K.out" u 2:($4/N) t "T* = 1.8" w l, "SIM-L-048-MCTOT-10K-TEMP-2500K.out" u 2:($4/N) t "T* = 2.5" w l, "SIM-L-048-MCTOT-10K-TEMP-3500K.out" u 2:($4/N) t "T* = 3.5" w l, "SIM-L-048-MCTOT-10K-TEMP-4500K.out" u 2:($4/N) t "T* = 4.5" w l
 
 
 pause -1
@@ -26,15 +26,15 @@ set output "plot1_diff_temp_magne.png"
 set xzeroaxis
 set yzeroaxis
 
-set xlabel "Magnetization"
-set ylabel "E"
+set xlabel "Pas Montecarlo"
+set ylabel "m* = M*/N"
 
 set rmargin 20
 set key at screen 1, graph 1
 
 N = 48*48
 
-plot "SIM-L-048-MCTOT-10K-TEMP-1500K.out" u 2:($8/N) t "Temp = 1.5K" w l, "SIM-L-048-MCTOT-10K-TEMP-1800K.out" u 2:($8/N) t "Temp = 1.8K" w l, "SIM-L-048-MCTOT-10K-TEMP-2500K.out" u 2:($8/N) t "Temp = 2.5K" w l, "SIM-L-048-MCTOT-10K-TEMP-3500K.out" u 2:($8/N) t "Temp = 3.5K" w l, "SIM-L-048-MCTOT-10K-TEMP-4500K.out" u 2:($8/N) t "Temp = 4.5K" w l
+plot "SIM-L-048-MCTOT-10K-TEMP-1500K.out" u 2:($8/N) t "T* = 1.5" w l, "SIM-L-048-MCTOT-10K-TEMP-1800K.out" u 2:($8/N) t "T* = 1.8" w l, "SIM-L-048-MCTOT-10K-TEMP-2500K.out" u 2:($8/N) t "T* = 2.5" w l, "SIM-L-048-MCTOT-10K-TEMP-3500K.out" u 2:($8/N) t "T* = 3.5" w l, "SIM-L-048-MCTOT-10K-TEMP-4500K.out" u 2:($8/N) t "T* = 4.5" w l
 
 
 pause -1
