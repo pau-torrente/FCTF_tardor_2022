@@ -1,11 +1,11 @@
-set term pngcairo size 1000,500
+set term pngcairo size 1500,800 font 'Sans, 23'
 set output "plot1_diff_temp_energy.png"
 
 
 set xzeroaxis
 set yzeroaxis
 
-set ylabel "e = E/N"
+set ylabel "e^*"
 set xlabel "Pas Montecarlo"
 
 set rmargin 20
@@ -19,7 +19,7 @@ plot "SIM-L-048-MCTOT-10K-TEMP-1500K.out" u 2:($4/N) t "T* = 1.5" w l, "SIM-L-04
 pause -1
 
 
-set term pngcairo size 1000,500
+set term pngcairo size 1500,800 font 'Sans, 23'
 set output "plot1_diff_temp_magne.png"
 
 
@@ -27,7 +27,7 @@ set xzeroaxis
 set yzeroaxis
 
 set xlabel "Pas Montecarlo"
-set ylabel "m* = M*/N"
+set ylabel "m*"
 
 set rmargin 20
 set key at screen 1, graph 1
